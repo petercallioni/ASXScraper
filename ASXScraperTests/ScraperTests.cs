@@ -1,10 +1,10 @@
 ﻿using Xunit;
-using ASXScrapper;
+using ASXScraper;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ASXScrapper.Tests
+namespace ASXScraper.Tests
 {
     public class ScraperTests
     {
@@ -12,7 +12,7 @@ namespace ASXScrapper.Tests
         [InlineData("VDHG")]
         public void RetrieveDataFromAsxTest(string value)
         {
-            ASXScrapper.Scraper scraper = new Scraper();
+            ASXScraper.Scraper scraper = new Scraper();
             Assert.True(scraper.GetData(value).Code == value );
         }
     }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ASXScrapper
+namespace ASXScraper
 {
     public class AsxData
     {
