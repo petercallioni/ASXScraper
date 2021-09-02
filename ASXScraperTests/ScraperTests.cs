@@ -9,12 +9,11 @@ namespace ASXScrapper.Tests
     public class ScraperTests
     {
         [Theory]
-        [InlineData("DSK")]
-        [InlineData("ASIA")]
-        public void RetrieveObjectFromAsxTest(string value)
+        [InlineData("VDHG")]
+        public void RetrieveDataFromAsxTest(string value)
         {
-            ASXScrapper.Scraper scrpaer = new Scraper();
-            Assert.True(scrpaer.GetData(value).Code == value );
+            ASXScrapper.Scraper scraper = new Scraper();
+            Assert.True(scraper.GetData(value).Code == value );
         }
     }
 }

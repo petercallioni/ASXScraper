@@ -9,37 +9,36 @@ namespace ASXScrapper
 {
     public class Scraper
     {
-        HttpClient client;
+        private readonly HttpClient _client;
 
         private const string URL = "https://www.asx.com.au/asx/1/share/";
 
         public Scraper()
         {
-            client = new HttpClient();
+            _client = new HttpClient();
         }
 
         ~Scraper()
         {
-            if(client != null)
+            if(_client != null)
             {
-                client.Dispose();
+                _client.Dispose();
             }
         }
 
-        public DataObject GetData(string asxTicker)
+        public AsxData GetData(string asxTicker)
         {
-            DataObject resultObject = null;
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(URL);
+            AsxData resultObject = null;
+            _client.BaseAddress = new Uri(URL);
 
-            client.DefaultRequestHeaders.Accept.Add(
+            _client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage response = client.GetAsync(asxTicker).Result;  // Blocking call
+            HttpResponseMessage response = _client.GetAsync(asxTicker).Result;  // Blocking call
             if (response.IsSuccessStatusCode)
             {
                string stringResult = response.Content.ReadAsStringAsync().Result;
-               resultObject = JsonConvert.DeserializeObject<DataObject>(stringResult);
+               resultObject = JsonConvert.DeserializeObject<AsxData>(stringResult);
             }
             else
             {

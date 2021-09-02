@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ASXScrapper
 {
-    public class DataObject
+    public class AsxData
     {
         public string Code { get; set; }
         public string IsinCode { get; set; }
