@@ -16,6 +16,7 @@ namespace ASXScraper
         public Scraper()
         {
             _client = new HttpClient();
+            _client.BaseAddress = new Uri(URL);
         }
 
         ~Scraper()
@@ -29,7 +30,6 @@ namespace ASXScraper
         public AsxData GetData(string asxTicker)
         {
             AsxData resultObject = null;
-            _client.BaseAddress = new Uri(URL);
 
             _client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
